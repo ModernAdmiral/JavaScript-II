@@ -38,9 +38,16 @@ const counterMaker = () => {
 // It should have a `limit` parameter. Any counters we make with `counterMaker`
 // will refuse to go over the limit, and start back at 1.
 
+
+
 // ==== Challenge 4: Create a counter function with an object that can increment and decrement ====
 const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
+  let counter = 0;
+  return counterObject = {
+  increment: () => {return counter + 1},
+  decrement: () => {return counter - 1}
+}
 };

@@ -122,11 +122,13 @@ runners.forEach(e => {
 })
 console.log(students);
 // Problem 3
+// 2XL and 3XL shirts are special order. Return the number of these shirts needed to be ordered per the data.
 
 let specialShirtSizes = [];
 runners.filter(e => {
   if (e.shirt_size === "3XL" || e.shirt_size === "2XL") {
    specialShirtSizes.push(e)
   }
-  console.log(specialShirtSizes);
+  
 })
+console.log(specialShirtSizes.length);
