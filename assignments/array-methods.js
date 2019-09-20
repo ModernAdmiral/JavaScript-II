@@ -58,28 +58,77 @@ const runners = [
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs. Combine both the first and last names and populate a new array called `fullNames`. This array will contain just strings.
 let fullNames = [];
+runners.forEach(e => {
+  fullNames.push(`${e.first_name} ${e.last_name}` );
+});
 console.log(fullNames);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runners' first names in uppercase because the director BECAME DRUNK WITH POWER. Populate an array called `firstNamesAllCaps`. This array will contain just strings.
 let firstNamesAllCaps = [];
+  runners.map(e => {
+    firstNamesAllCaps.push(e.first_name.toUpperCase());
+  });
 console.log(firstNamesAllCaps);
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue. We need a filtered version of the runners array, containing only those runners with large sized shirts so they can choose a different size. This will be an array of objects.
 let runnersLargeSizeShirt = [];
+runners.filter(
+  filterLarge = (e) => {
+    if (e.shirt_size === "L") {
+      runnersLargeSizeShirt.push(e);
+    }
+    return 
+  }
+)
 console.log(runnersLargeSizeShirt);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations and save the total into a ticketPriceTotal variable.
 let ticketPriceTotal = 0;
-console.log(ticketPriceTotal);
+let ticketPrices = [];
+  runners.forEach(e => {
+    ticketPrices.push(e.donation);
+  })
+
+ticketPriceTotal += ticketPrices.reduce((a, b) => {return a + b});
+
+console.log(ticketPriceTotal)
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+// Runners that donate at least $100 receive a free custom waterbottle. How many waterbottles should be made?
+
+let donationsOver100 = [];
+runners.forEach(e => {
+  if (e.donation >= 100) {
+    donationsOver100.push(e);
+  }
+  return
+})
+console.log(donationsOver100.length);
+
 
 // Problem 2
-
+// Runners that are students, receive a free year subscription to the sponsor's services.  Return the student objects. Determine if they are students based on if '.edu' is in the runners email address.
+let students = [];
+runners.forEach(e => {
+  if (e.email.includes('.edu')) {
+  students.push(e);
+  }
+})
+console.log(students);
 // Problem 3
+// 2XL and 3XL shirts are special order. Return the number of these shirts needed to be ordered per the data.
+
+let specialShirtSizes = [];
+runners.filter(e => {
+  if (e.shirt_size === "3XL" || e.shirt_size === "2XL") {
+   specialShirtSizes.push(e)
+  }
+  
+})
+console.log(specialShirtSizes.length);
